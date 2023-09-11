@@ -1,7 +1,10 @@
 import 'package:book_shop/core/utils/resources/assets_manager.dart';
+import 'package:book_shop/core/utils/resources/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/route_manager.dart';
 
+import '../../../../home/presentation/views/home_view.dart';
 import 'sliding_text.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -20,6 +23,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
     initSlidingAnimation();
+    navigateToHome();
   }
 
   @override
@@ -49,7 +53,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     );
   }
 
-
   /// Initial sliding animation
   void initSlidingAnimation() {
     animationController = AnimationController(
@@ -62,5 +65,19 @@ class _SplashViewBodyState extends State<SplashViewBody>
       end: Offset.zero,
     ).animate(animationController);
     animationController.forward();
+  }
+
+  /// Navigate to home
+  void navigateToHome() {
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        Get.offAll(
+          () => const HomeView(),
+          transition: Transition.fadeIn,
+          duration: kTransitionDuration,
+        );
+      },
+    );
   }
 }
