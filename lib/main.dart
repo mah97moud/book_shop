@@ -19,7 +19,9 @@ class BookShopApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         useMaterial3: true,
         scaffoldBackgroundColor: kPrimaryColor,
-        textTheme: GoogleFonts.montserratTextTheme(),
+        textTheme: GoogleFonts.montserratTextTheme(
+          ThemeData.dark().textTheme,
+        ),
       ),
       home: const SplashView(),
     );
