@@ -11,7 +11,6 @@ class HorizontalHomeListView extends StatelessWidget {
     return Container(
       height: height * 0.3,
       padding: const EdgeInsets.symmetric(
-        horizontal: 22.0,
         vertical: 10.0,
       ),
       child: ListView.builder(
