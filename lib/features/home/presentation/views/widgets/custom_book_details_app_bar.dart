@@ -12,11 +12,13 @@ class CustomBookDetailsAppBar extends StatelessWidget
       leading: const Padding(
           padding: EdgeInsets.only(left: 15.0), child: CloseButton()),
       actions: [
-        IconButton(
+        Padding(
           padding: const EdgeInsets.only(right: 30.0),
-          onPressed: () {},
-          icon: const Icon(
-            AntDesign.shoppingcart,
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              AntDesign.shoppingcart,
+            ),
           ),
         ),
       ],
