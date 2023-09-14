@@ -1,6 +1,7 @@
 import 'package:book_shop/core/utils/resources/constants.dart';
 import 'package:book_shop/core/utils/resources/styles_manager.dart';
 import 'package:book_shop/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:book_shop/features/home/presentation/views/widgets/books_action.dart';
 import 'package:book_shop/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,8 @@ class BookDetailsViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 20.0),
           const BookRating(),
+          const SizedBox(height: 40.0),
+          const BooksAction()
         ],
       ),
     );
