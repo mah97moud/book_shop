@@ -18,8 +18,9 @@ class HorizontalHomeListView extends StatelessWidget {
         itemCount: 5,
         itemBuilder: (context, index) {
           return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: const CustomListViewItem());
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: const CustomListViewItem(),
+          );
         },
       ),
     );
