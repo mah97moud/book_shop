@@ -3,31 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({Key? key}) : super(key: key);
+  const BookRating({
+    Key? key,
+    this.mainAxisAlignment = MainAxisAlignment.center,
+  }) : super(key: key);
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(
+      mainAxisAlignment: mainAxisAlignment,
+      children: const [
+        Icon(
           FontAwesome5Solid.star,
           color: Color(0xFFFFDD4F),
+          size: 16.0,
         ),
-        const SizedBox(
+        SizedBox(
           width: 6.3,
         ),
-        const Text(
+        Text(
           '4.8',
           style: StylesManager.textStyle16,
         ),
-        const SizedBox(
+        SizedBox(
           width: 5,
         ),
-        Text(
-          '(245)',
-          style: StylesManager.textStyle14
-              .copyWith(color: const Color(0xFF707070)),
+        Opacity(
+          opacity: 0.5,
+          child: Text(
+            '(245)',
+            style: StylesManager.textStyle14,
+          ),
         ),
       ],
     );
