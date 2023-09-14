@@ -20,4 +20,8 @@ abstract class StylesManager {
     fontSize: 20,
     fontWeight: FontWeight.w400,
   );
+  static const  textStyle30 = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.w400,
+  );
 }
