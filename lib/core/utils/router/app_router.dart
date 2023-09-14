@@ -1,4 +1,5 @@
 import 'package:book_shop/core/utils/router/route_names.dart';
+import 'package:book_shop/features/home/presentation/views/book_details_view.dart';
 import 'package:book_shop/features/home/presentation/views/home_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,6 +17,13 @@ abstract class AppRouter {
         path: '/homeView',
         name: RouteNames.homeView,
         builder: (context, state) => const HomeView(),
+        routes: [
+          GoRoute(
+            path: RouteNames.bookDetailsView,
+            name: RouteNames.bookDetailsView,
+            builder: (context, state) => const BookDetailsView(),
+          ),
+        ],
       ),
     ],
   );

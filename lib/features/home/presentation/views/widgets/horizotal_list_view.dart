@@ -1,4 +1,4 @@
-import 'package:book_shop/features/home/presentation/views/widgets/custom_list_view_item.dart';
+import 'package:book_shop/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalHomeListView extends StatelessWidget {
@@ -19,7 +19,7 @@ class HorizontalHomeListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
-            child: const CustomListViewItem(),
+            child: const CustomBookImage(),
           );
         },
       ),
