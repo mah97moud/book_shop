@@ -1,10 +1,9 @@
 import 'package:book_shop/core/utils/resources/assets_manager.dart';
-import 'package:book_shop/core/utils/resources/constants.dart';
+import 'package:book_shop/core/utils/router/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/route_manager.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../home/presentation/views/home_view.dart';
 import 'sliding_text.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -72,11 +71,15 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        Get.offAll(
-          () => const HomeView(),
-          transition: Transition.fadeIn,
-          duration: kTransitionDuration,
+        context.pushReplacementNamed(
+          RouteNames.homeView,
         );
+        
+        // Get.offAll(
+        //   () => const HomeView(),
+        //   transition: Transition.fadeIn,
+        //   duration: kTransitionDuration,
+        // );
       },
     );
   }
