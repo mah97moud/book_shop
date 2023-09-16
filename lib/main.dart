@@ -9,7 +9,8 @@ import 'features/home/presentation/manager/featured_books_cubit/featured_books_c
 import 'features/home/presentation/manager/new_books_cubit/new_books_cubit.dart';
 
 void main() async {
-  setupServiceLocator();
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupServiceLocator();
   runApp(const BookShopApp());
 }
 
@@ -20,9 +21,15 @@ class BookShopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => NewBooksCubit(getIt.get())),
         BlocProvider(
-          create: (context) => FeaturedBooksCubit(getIt.get()),
+          create: (context) => NewBooksCubit(
+            getIt.get(),
+          )..fetchNewBooks(),
+        ),
+        BlocProvider(
+          create: (context) => FeaturedBooksCubit(
+            getIt.get(),
+          )..fetchFeatureBooks(),
         ),
       ],
       child: MaterialApp.router(
