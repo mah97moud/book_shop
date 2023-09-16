@@ -60,7 +60,10 @@ class SearchListItem extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const BookRating()
+                     const BookRating(
+                      rating: 0.0,
+                      count: 0,
+                     )
                   ],
                 )
               ],

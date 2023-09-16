@@ -1,14 +1,17 @@
-import 'package:book_shop/core/utils/resources/assets_manager.dart';
 import 'package:book_shop/core/utils/resources/constants.dart';
 import 'package:book_shop/core/utils/resources/styles_manager.dart';
 import 'package:book_shop/core/utils/router/route_names.dart';
+import 'package:book_shop/features/home/data/models/book_model/book_model.dart';
+import 'package:book_shop/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'book_rating.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({Key? key}) : super(key: key);
+  const BookItem({Key? key, required this.book}) : super(key: key);
+
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +23,7 @@ class BookItem extends StatelessWidget {
         height: 130.0,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 5.5 / 9,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      AssetsManager.testImage,
-                    ),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
+            CustomBookImage(imageUrl: book.volumeInfo?.imageLinks?.thumbnail),
             const SizedBox(width: 30.0),
             Expanded(
               child: Column(
@@ -42,7 +32,7 @@ class BookItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.sizeOf(context).width * 0.5,
                     child: Text(
-                      'Hary Potter and the Golbet of Fire',
+                      book.volumeInfo?.title ?? '',
                       style: StylesManager.textStyle20
                           .copyWith(fontFamily: kGTSectraFine),
                       maxLines: 2,
@@ -50,8 +40,8 @@ class BookItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 3.0),
-                  const Text(
-                    'J.K. Rowling',
+                  Text(
+                    book.volumeInfo?.authors?.first ?? '',
                     style: StylesManager.textStyle14,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -61,12 +51,16 @@ class BookItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '19.99 €',
+                        'Free',
                         style: StylesManager.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const BookRating()
+                      BookRating(
+                        rating:
+                            book.volumeInfo?.averageRating?.toDouble() ?? 0.0,
+                        count: book.volumeInfo?.ratingsCount?.toInt() ?? 0,
+                      )
                     ],
                   )
                 ],

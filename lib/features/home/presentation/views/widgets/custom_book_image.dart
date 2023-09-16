@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({Key? key, required this.imageUrl}) : super(key: key);
+  const CustomBookImage({
+    Key? key,
+    required this.imageUrl,
+    this.aspectRatio,
+  }) : super(key: key);
 
   final String? imageUrl;
+  final double? aspectRatio;
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 5.5 / 8,
+      aspectRatio: aspectRatio ?? 5.5 / 8,
       child: Container(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
