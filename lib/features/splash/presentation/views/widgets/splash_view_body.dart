@@ -1,7 +1,6 @@
-import 'package:book_shop/core/utils/resources/assets_manager.dart';
 import 'package:book_shop/core/utils/router/route_names.dart';
+import 'package:book_shop/core/widgets/custom_app_logo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'sliding_text.dart';
@@ -39,8 +38,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SvgPicture.asset(
-          AssetsManager.logo,
+        CustomAppLogo(
           height: width * 0.2,
         ),
         const SizedBox(height: 4),
@@ -74,7 +72,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         context.pushReplacementNamed(
           RouteNames.homeView,
         );
-        
+
         // Get.offAll(
         //   () => const HomeView(),
         //   transition: Transition.fadeIn,

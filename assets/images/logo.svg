@@ -12,18 +12,6 @@
 </g>
 </g>
 <defs>
-<filter id="filter0_b_1_2" x="-9.5" y="-9.5" width="94.9997" height="36.1037" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feGaussianBlur in="BackgroundImageFix" stdDeviation="5"/>
-<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1_2"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1_2" result="shape"/>
-</filter>
-<filter id="filter1_b_1_2" x="19.58" y="5.60199" width="30.5" height="21.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feGaussianBlur in="BackgroundImageFix" stdDeviation="5"/>
-<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1_2"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1_2" result="shape"/>
-</filter>
 <clipPath id="clip0_1_2">
 <rect width="375" height="812" fill="white" transform="translate(-29.5 -47.5)"/>
 </clipPath>

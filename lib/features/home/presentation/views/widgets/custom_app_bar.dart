@@ -1,8 +1,9 @@
+import 'package:book_shop/core/utils/router/route_names.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../../core/utils/resources/assets_manager.dart';
+import '../../../../../core/widgets/custom_app_logo.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({Key? key}) : super(key: key);
@@ -14,14 +15,14 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SvgPicture.asset(
-            AssetsManager.logo,
-            height: 18.0,
-          ),
+          const CustomAppLogo(),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(RouteNames.searchView);
+            },
             icon: const Icon(
               FontAwesome5Solid.search,
+              size: 18.0,
             ),
           ),
         ],
@@ -29,3 +30,5 @@ class CustomAppBar extends StatelessWidget {
     );
   }
 }
+
+
