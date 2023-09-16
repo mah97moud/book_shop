@@ -20,7 +20,6 @@ class CustomAppLogo extends StatelessWidget {
         Colors.white,
         BlendMode.dstIn,
       ),
-      
     );
   }
 }

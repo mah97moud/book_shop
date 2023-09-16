@@ -2,10 +2,10 @@ import 'package:book_shop/features/search/presentation/views/widgets/search_view
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
-const SearchView({ Key? key }) : super(key: key);
+  const SearchView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(child: SearchViewBody()),
     );

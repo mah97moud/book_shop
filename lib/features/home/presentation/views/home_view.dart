@@ -2,11 +2,11 @@ import 'package:book_shop/features/home/presentation/views/widgets/home_view_bod
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
-const HomeView({ Key? key }) : super(key: key);
+  const HomeView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
-    return  const Scaffold(
+  Widget build(BuildContext context) {
+    return const Scaffold(
       body: HomeViewBody(),
     );
   }

@@ -13,7 +13,7 @@ class BestSellerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         context.goNamed(RouteNames.bookDetailsView);
       },
       child: SizedBox(
