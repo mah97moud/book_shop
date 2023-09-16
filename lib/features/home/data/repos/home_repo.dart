@@ -4,6 +4,6 @@ import '../../../../core/errors/failure.dart';
 import '../models/book_model/book_model.dart';
 
 abstract class HomeRepo {
-  Future<Result<List<BookModel>, Failure>> fetchBestSellerBooks();
+  Future<Result<List<BookModel>, Failure>> fetchNewBooks();
   Future<Result<List<BookModel>, Failure>> fetchFeaturedBooks();
 }
