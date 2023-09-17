@@ -9,6 +9,15 @@ abstract class Failure implements Exception {
 class ServerFailure extends Failure {
   ServerFailure({required super.errMessage});
 
+  factory ServerFailure.error(dynamic e) {
+    if (e is DioException) {
+      return ServerFailure.fromDioException(e);
+    }
+    return ServerFailure(
+      errMessage: e.toString(),
+    );
+  }
+
   factory ServerFailure.fromDioException(DioException dioEx) {
     return switch (dioEx.type) {
       DioExceptionType.connectionTimeout => ServerFailure(
@@ -43,7 +52,10 @@ class ServerFailure extends Failure {
     required int statusCode,
     dynamic response,
   }) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
+    if (statusCode == 400 ||
+        statusCode == 401 ||
+        statusCode == 403 ||
+        statusCode == 429) {
       final error = response as Map<String, dynamic>;
       return ServerFailure(errMessage: error['error']['message']);
     } else if (statusCode == 404) {

@@ -1,5 +1,9 @@
+import 'package:book_shop/core/widgets/custom_error_widget.dart';
+import 'package:book_shop/core/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../manager/similler_books_cubit/similler_books_cubit.dart';
 import 'custom_book_image.dart';
 
 class SimilarBookListView extends StatelessWidget {
@@ -14,18 +18,30 @@ class SimilarBookListView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         vertical: 10.0,
       ),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.zero,
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0),
-            child: const CustomBookImage(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
-            ),
-          );
+      child: BlocBuilder<SimillerBooksCubit, SimillerBooksState>(
+        builder: (context, state) {
+          return switch (state) {
+            SimillerBooksInitial() => const SizedBox.shrink(),
+            SimillerBooksLoading() => const CustomLoadingIndicator(),
+            SimillerBooksFailure() =>
+              CustomErrorWidget(errMessage: state.message),
+            SimillerBooksSuccess(
+              books: final books,
+            ) =>
+              ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.zero,
+                itemCount: books.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child:   CustomBookImage(
+                      imageUrl: books[index].volumeInfo?.imageLinks?.thumbnail
+                    ),
+                  );
+                },
+              ),
+          };
         },
       ),
     );
