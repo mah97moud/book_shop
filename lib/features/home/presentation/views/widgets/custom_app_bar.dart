@@ -1,7 +1,6 @@
-import 'package:book_shop/core/utils/router/route_names.dart';
+import 'package:book_shop/features/search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/widgets/custom_app_logo.dart';
 
@@ -18,7 +17,12 @@ class CustomAppBar extends StatelessWidget {
           const CustomAppLogo(),
           IconButton(
             onPressed: () {
-              context.pushNamed(RouteNames.searchView);
+              // context.pushNamed(RouteNames.searchView);
+
+              showSearch(
+                context: context,
+                delegate: SearchView(),
+              );
             },
             icon: const Icon(
               FontAwesome5Solid.search,

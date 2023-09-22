@@ -19,7 +19,7 @@ class HomeRepoImpl implements HomeRepo {
             '/volumes?Filtering=free-ebooks&Sorting=newest%20&q=subject%3Aprogramming',
       );
       final volume = VolumeModel.fromJson(data);
-      List<Book> books = volume.books ?? [];
+      List<Book> books = volume.items ?? [];
       return ResultSuccess(books);
     } on DioException catch (dioEx) {
       return ResultFailure(
@@ -41,7 +41,7 @@ class HomeRepoImpl implements HomeRepo {
         endPoint: '/volumes?Filtering=free-ebooks&q=subject%3Aprogramming',
       );
       final volume = VolumeModel.fromJson(data);
-      List<Book> books = volume.books ?? [];
+      final  books = volume.items ?? <Book>[];
 
       return ResultSuccess(books);
     } on DioException catch (dioEx) {
@@ -67,7 +67,7 @@ class HomeRepoImpl implements HomeRepo {
             '/volumes?Filtering=free-ebooks&q=subject%3Aprogramming&Sorting=relevance',
       );
       final volume = VolumeModel.fromJson(data);
-      List<Book> books = volume.books ?? [];
+      List<Book> books = volume.items ?? [];
       return ResultSuccess(books);
     } on DioException catch (dioEx) {
       return ResultFailure(

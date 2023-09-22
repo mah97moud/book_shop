@@ -1,18 +1,24 @@
 import 'package:book_shop/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../data/models/volume_model/book.dart';
 
 class BooksAction extends StatelessWidget {
   const BooksAction({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final book = GoRouterState.of(context).extra as Book;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
         children: [
           Expanded(
             child: CustomButton(
-              '19.99€',
+              '${book.saleInfo?.listPrice?.amount == 0 ? 'Free' : ' ${book.saleInfo?.listPrice?.amount ?? 'Free'}'} '
+              '${book.saleInfo?.listPrice?.currencyCode ?? ''}',
               onPressed: () {},
               backgroundColor: Colors.white,
               borderRadius: const BorderRadius.only(

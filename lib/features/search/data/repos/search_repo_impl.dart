@@ -4,6 +4,7 @@ import 'package:book_shop/core/utils/helpers/result_helper.dart';
 import 'package:book_shop/features/search/data/repos/search_repo.dart';
 
 import '../../../home/data/models/volume_model/book.dart';
+import '../../../home/data/models/volume_model/volume_model.dart';
 
 class SearchRepoImpl extends SearchRepo {
   final ApiService _apiService;
@@ -15,13 +16,13 @@ class SearchRepoImpl extends SearchRepo {
     required String searchText,
   }) async {
     try {
-      final res = await _apiService.get(
+      final data = await _apiService.get(
         endPoint:
             '/volumes?Filtering=free-ebooks&Sorting=newest%20&subject=programming&q=$searchText%2Bsubject%3Aprogramming',
       );
 
-      List<Book> books = [];
-      books = (res['items'] as List).map((e) => Book.fromJson(e)).toList();
+      final volume = VolumeModel.fromJson(data);
+      List<Book> books = volume.items ?? [];
       return ResultSuccess(books);
     } catch (e) {
       return ResultFailure(ServerFailure.error(e));

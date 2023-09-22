@@ -15,6 +15,7 @@ class HorizontalHomeListView extends StatelessWidget {
     final height = size.height;
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
       builder: (context, state) {
+        print('My State $state');
         return switch (state) {
           FeaturedBoxInitial() => const SizedBox.shrink(),
           FeaturedBoxLoading() => const CustomLoadingIndicator(),

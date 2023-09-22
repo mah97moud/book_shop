@@ -7,12 +7,12 @@ import '../../../../home/data/models/volume_model/book.dart';
 import '../../../../home/presentation/views/widgets/book_rating.dart';
 
 class SearchListItem extends StatelessWidget {
-  const SearchListItem({Key? key, required this.book}) : super(key: key);
-  final Book book;
+  const SearchListItem({Key? key, this.book}) : super(key: key);
+  final Book? book;
 
   @override
   Widget build(BuildContext context) {
-    var volumeInfo = book.volumeInfo;
+    var volumeInfo = book?.volumeInfo;
     return Container(
       height: 130.0,
       padding: const EdgeInsets.only(bottom: 10.0),
@@ -49,15 +49,16 @@ class SearchListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${book.saleInfo?.listPrice?.amount ?? '0'} '
-                      '${book.saleInfo?.listPrice?.currencyCode}',
+                      '${book?.saleInfo?.listPrice?.amount == 0 ? 'Free' : '${book?.saleInfo?.listPrice?.amount ?? 'Free'}'} '
+                      '${book?.saleInfo?.listPrice?.currencyCode ?? ''}',
                       style: StylesManager.textStyle20.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     BookRating(
-                      rating: book.volumeInfo?.averageRating?.toDouble() ?? 0.0,
-                      count: book.volumeInfo?.ratingsCount?.toInt() ?? 0,
+                      rating:
+                          book?.volumeInfo?.averageRating?.toDouble() ?? 0.0,
+                      count: book?.volumeInfo?.ratingsCount?.toInt() ?? 0,
                     )
                   ],
                 )

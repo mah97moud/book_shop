@@ -9,9 +9,9 @@ part 'volume_model.g.dart';
 class VolumeModel extends Equatable {
   final String? kind;
   final int? totalItems;
-  final List<Book>? books;
+  final List<Book>? items;
 
-  const VolumeModel({this.kind, this.totalItems, this.books});
+  const VolumeModel({this.kind, this.totalItems, this.items});
 
   factory VolumeModel.fromJson(Map<String, dynamic> json) {
     return _$VolumeModelFromJson(json);
@@ -27,7 +27,7 @@ class VolumeModel extends Equatable {
     return VolumeModel(
       kind: kind ?? this.kind,
       totalItems: totalItems ?? this.totalItems,
-      books: items ?? books,
+      items: items ?? this.items,
     );
   }
 
@@ -35,5 +35,5 @@ class VolumeModel extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object?> get props => [kind, totalItems, books];
+  List<Object?> get props => [kind, totalItems, items];
 }

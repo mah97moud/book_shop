@@ -2,11 +2,10 @@ import 'package:book_shop/core/utils/router/route_names.dart';
 import 'package:book_shop/core/utils/service_locator.dart';
 import 'package:book_shop/features/home/presentation/views/book_details_view.dart';
 import 'package:book_shop/features/home/presentation/views/home_view.dart';
-import 'package:book_shop/features/search/presentation/views/search_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../data/models/voluem_model/book.dart';
+import '../../../features/home/data/models/volume_model/book.dart';
 import '../../../features/home/presentation/manager/similler_books_cubit/similler_books_cubit.dart';
 import '../../../features/splash/presentation/views/splash_view.dart';
 
@@ -37,11 +36,11 @@ abstract class AppRouter {
           ),
         ],
       ),
-      GoRoute(
-        path: '/${RouteNames.searchView}',
-        name: RouteNames.searchView,
-        builder: (context, state) => const SearchView(),
-      ),
+      // GoRoute(
+      //   path: '/${RouteNames.searchView}',
+      //   name: RouteNames.searchView,
+      //   builder: (context, state) => const SearchView(),
+      // ),
     ],
   );
 }

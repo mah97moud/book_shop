@@ -55,8 +55,8 @@ class BookItem extends StatelessWidget {
                     children: [
                       Text(
                         '${book.saleInfo?.listPrice?.amount == 0 ? 'Free' : 
-                        ' ${book.saleInfo?.listPrice?.amount}'} '
-                        '${book.saleInfo?.listPrice?.currencyCode}',
+                        ' ${book.saleInfo?.listPrice?.amount ?? 'Free'}'} '
+                        '${book.saleInfo?.listPrice?.currencyCode ?? ''}',
                         style: StylesManager.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),

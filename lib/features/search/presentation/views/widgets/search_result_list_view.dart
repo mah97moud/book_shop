@@ -1,9 +1,9 @@
 import 'package:book_shop/core/widgets/custom_error_widget.dart';
-import 'package:book_shop/core/widgets/custom_loading_indicator.dart';
 import 'package:book_shop/features/search/presentation/manager/search_books_bloc/search_books_bloc.dart';
 import 'package:book_shop/features/search/presentation/views/widgets/search_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class SearchResultListView extends StatelessWidget {
   const SearchResultListView({Key? key}) : super(key: key);
@@ -16,7 +16,17 @@ class SearchResultListView extends StatelessWidget {
           SearchBooksInitial() => const Center(
               child: Text('Enter Text to search'),
             ),
-          SearchBooksLoading() => const CustomLoadingIndicator(),
+          SearchBooksLoading() => Expanded(
+              child: Skeletonizer(
+                enabled: true,
+                child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (_, index) {
+                    return const SearchListItem();
+                  },
+                ),
+              ),
+            ),
           SearchBooksFailure() => CustomErrorWidget(
               errMessage: state.errMessage,
             ),
