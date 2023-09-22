@@ -1,32 +1,26 @@
+import 'package:book_shop/features/home/data/models/book_model/book_model.dart';
+import 'package:book_shop/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/resources/assets_manager.dart';
 import '../../../../../core/utils/resources/constants.dart';
 import '../../../../../core/utils/resources/styles_manager.dart';
 import '../../../../home/presentation/views/widgets/book_rating.dart';
 
 class SearchListItem extends StatelessWidget {
-  const SearchListItem({Key? key}) : super(key: key);
+  const SearchListItem({Key? key, required this.book}) : super(key: key);
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    var volumeInfo = book.volumeInfo;
+    return Container(
       height: 130.0,
+      padding: const EdgeInsets.only(bottom: 10.0),
       child: Row(
         children: [
-          AspectRatio(
+          CustomBookImage(
             aspectRatio: 5.5 / 9,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                image: const DecorationImage(
-                  image: AssetImage(
-                    AssetsManager.testImage,
-                  ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
+            imageUrl: volumeInfo?.imageLinks?.thumbnail,
           ),
           const SizedBox(width: 30.0),
           Expanded(
@@ -36,7 +30,7 @@ class SearchListItem extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.sizeOf(context).width * 0.5,
                   child: Text(
-                    'Hary Potter and the Golbet of Fire',
+                    volumeInfo?.title ?? '',
                     style: StylesManager.textStyle20
                         .copyWith(fontFamily: kGTSectraFine),
                     maxLines: 2,
@@ -44,8 +38,8 @@ class SearchListItem extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 3.0),
-                const Text(
-                  'J.K. Rowling',
+                Text(
+                  volumeInfo?.authors?.first ?? '',
                   style: StylesManager.textStyle14,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -60,10 +54,10 @@ class SearchListItem extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                     const BookRating(
-                      rating: 0.0,
-                      count: 0,
-                     )
+                    BookRating(
+                      rating: book.volumeInfo?.averageRating?.toDouble() ?? 0.0,
+                      count: book.volumeInfo?.ratingsCount?.toInt() ?? 0,
+                    )
                   ],
                 )
               ],
