@@ -18,7 +18,7 @@ final class NewBooksFailure extends NewBooksState {
 }
 
 final class NewBooksSuccess extends NewBooksState {
-  final List<BookModel> books;
+  final List<Book> books;
 
   const NewBooksSuccess({required this.books});
 }

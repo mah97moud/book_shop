@@ -1,14 +1,14 @@
-import 'package:book_shop/features/home/data/models/book_model/book_model.dart';
 import 'package:book_shop/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/resources/constants.dart';
 import '../../../../../core/utils/resources/styles_manager.dart';
+import '../../../../home/data/models/volume_model/book.dart';
 import '../../../../home/presentation/views/widgets/book_rating.dart';
 
 class SearchListItem extends StatelessWidget {
   const SearchListItem({Key? key, required this.book}) : super(key: key);
-  final BookModel book;
+  final Book book;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,8 @@ class SearchListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '19.99 €',
+                      '${book.saleInfo?.listPrice?.amount ?? '0'} '
+                      '${book.saleInfo?.listPrice?.currencyCode}',
                       style: StylesManager.textStyle20.copyWith(
                         fontWeight: FontWeight.bold,
                       ),

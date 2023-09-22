@@ -27,7 +27,7 @@ Future<void> setupServiceLocator() async {
       getIt.get<ApiService>(),
     ),
   );
-  
+
   getIt.registerLazySingleton<SearchRepo>(
     () => SearchRepoImpl(
       apiService: getIt.get<ApiService>(),

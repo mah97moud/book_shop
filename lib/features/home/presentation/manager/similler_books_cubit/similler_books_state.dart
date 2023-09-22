@@ -18,7 +18,7 @@ final class SimillerBooksFailure extends SimillerBooksState {
 }
 
 final class SimillerBooksSuccess extends SimillerBooksState {
-  final List<BookModel> books;
+  final List<Book> books;
 
   const SimillerBooksSuccess({required this.books});
 }

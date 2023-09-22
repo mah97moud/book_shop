@@ -21,7 +21,7 @@ final class SearchBooksFailure extends SearchBooksState {
 }
 
 final class SearchBooksSuccess extends SearchBooksState {
-  final List<BookModel> books;
+  final List<Book> books;
 
   const SearchBooksSuccess(this.books);
   @override
